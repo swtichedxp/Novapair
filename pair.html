@@ -8,155 +8,184 @@
   <style>
     body {
       display: flex;
-      justify-content: center;
+      flex-direction: column;
       align-items: center;
-      height: 100vh;
+      justify-content: center;
+      min-height: 100vh;
       margin: 0;
-      background: URL("https://files.catbox.moe/xv34mh.jpeg");
-      font-family: Arial, sans-serif;
+      padding: 20px;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-image: url('https://files.catbox.moe/s95ivz.jpeg');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      color: #e0f7fa;
     }
 
     .container {
+      width: 100%;
+      max-width: 500px;
       display: flex;
       flex-direction: column;
       align-items: center;
+      gap: 25px;
+      padding: 40px;
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(15px);
+      -webkit-backdrop-filter: blur(15px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+      border-radius: 20px;
+      transition: all 0.3s ease-in-out;
     }
 
-    .box {
-      width: 300px;
-      height: 320px;
-      padding: 20px;
-      position: relative;
+    .container:hover {
+      box-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.5);
+    }
+
+    .header-section {
+      width: 100%;
       text-align: center;
-      background-color: #fff;
-      border-radius: 10px;
-      transform: perspective(1000px) rotateY(0deg);
-      box-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
-      position: relative;
     }
-
-    #text {
-      color: #000; /* Set the text color to black (#000) */
+    
+    .header-section h3 {
+      font-size: 2rem;
+      margin: 0;
+      font-weight: 700;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+      letter-spacing: 2px;
+      color: white;
     }
-
-    .input-container input {
-      color: #000; /* Set the text color to black (#000) */
-    }
-
-    .centered-text {
-      color: #000; /* Set the text color to black (#000) */
+    
+    .header-section h6 {
+      font-size: 1rem;
+      margin-top: 5px;
+      opacity: 0.8;
+      letter-spacing: 1.5px;
+      color: white;
     }
 
     .input-container {
       display: flex;
-      background: white;
-      border-radius: 1rem;
-      background: linear-gradient(45deg, #c5c5c5 0%, #ffffff 100%);
-      box-shadow: 20px 20px 20px #d8d8d8, -10px -10px 20px #f8f8f8;
-      padding: 0.3rem;
-      gap: 0.3rem;
-      max-width: 300px; /* Set your desired maximum width */
+      gap: 10px;
       width: 100%;
+      max-width: 350px;
     }
 
     .input-container input {
-      border-radius: 0.8rem 0 0 0.8rem;
-      background: #e8e8e8;
-      box-shadow: inset 13px 13px 10px #dcdcdc, inset -13px -13px 10px #f4f4f4;
-      width: 100%;
-      flex-basis: 75%;
-      padding: 1rem;
-      border: none;
-      border-left: 2px solid #4998FF;
-      color: #5e5e5e;
-      transition: all 0.2s ease-in-out;
+      flex-grow: 1;
+      padding: 15px;
+      font-size: 1rem;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.1);
+      color: white;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    }
+    
+    .input-container input::placeholder {
+      color: rgba(255, 255, 255, 0.7);
     }
 
     .input-container input:focus {
-      border-left: 2px solid #4998FF;
       outline: none;
-      box-shadow: inset 13px 13px 10px #BFF0FA, inset -13px -13px 10px #f4f4f4;
+      background: rgba(255, 255, 255, 0.2);
+      border-color: rgba(255, 255, 255, 0.4);
     }
 
     .input-container button {
-      flex-basis: 25%;
-      padding: 1rem;
-      background: linear-gradient(135deg, #BFF0FA 0%, #4998FF 100%);
-      font-weight: 900;
-      letter-spacing: 0.3rem;
-      text-transform: uppercase;
+      padding: 15px 25px;
+      font-size: 1rem;
+      font-weight: bold;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.1);
       color: white;
-      border: none;
-      width: 100%;
-      border-radius: 0 1rem 1rem 0;
-      transition: all 0.2s ease-in-out;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
     }
 
     .input-container button:hover {
-      background: linear-gradient(135deg, #BFF0FA 0%, #4998ffc4 100%);
+      background: rgba(255, 255, 255, 0.2);
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
     }
 
-    @media (max-width: 500px) {
+    #pair {
+      text-align: center;
+      width: 100%;
+      margin-top: 20px;
+    }
+    
+    #pair a, #pair font {
+      color: white;
+      font-weight: 400;
+      text-shadow: 0 1px 5px rgba(0, 0, 0, 0.5);
+    }
+
+    #copy {
+      cursor: pointer;
+      font-weight: bold;
+      color: #00bcd4 !important;
+      transition: color 0.3s ease;
+    }
+    
+    #copy span {
+      color: white !important;
+    }
+
+    #copy:hover {
+      color: #00e5ff !important;
+    }
+    
+    #waiting-message {
+      color: white;
+      text-shadow: 0 1px 5px rgba(0, 0, 0, 0.5);
+    }
+
+    @media (max-width: 600px) {
+      body {
+        padding: 10px;
+      }
+      .container {
+        padding: 30px;
+        width: 95%;
+      }
+      .header-section h3 {
+        font-size: 1.8rem;
+      }
+      .header-section h6 {
+        font-size: 0.9rem;
+      }
       .input-container {
         flex-direction: column;
       }
-
-      .input-container input {
-        border-radius: 0.8rem;
-      }
-
-      .input-container button {
-        padding: 1rem;
-        border-radius: 0.8rem;
-      }
-    }
-
-    .centered-text {
-      text-align: center;
-    }
-
-    @media (max-width: 500px) {
-      .box {
-        width: 90%; 
-      }
-    }
-
-    @media (max-width: 500px) {
-      .input-container input {
-        border-radius: 0.8rem;
-        width: 80%; 
-      }
-
-      .input-container button {
-        padding: 1rem;
-        border-radius: 0.9rem;
-        width: 100%; 
+      .input-container input, .input-container button {
+        width: 100%;
+        box-sizing: border-box;
       }
     }
   </style>
 </head>
 <body>
   <div class="container">
-    <div class="main">
-      <div class="box" id="box">
-        <div id="text">
-          <i class="fa fa-user"></i>
-          <p>
-            <h3 class="centered-text">NOVA PAIR</h3>
-            <br>
-            <h6>Input your number with a country code.</h6>
-            <div class="input-container">
-              <input placeholder="2637xxxx" type="number" id="number" placeholder="Enter your phone number with a country code" name="">
-              <button id="submit">Submit</button>
-            </div>
-            
-            <a id="waiting-message" class="centered-text" style="display: none;">Processing... please wait</a>
-            <br>
-            <br>
-            <main id="pair"></main>
-          </p>
-        </div>
+    <div class="header-section">
+      <h3>NOVA PAIR</h3>
+      <h6>Input your number with a country code.</h6>
+    </div>
+    
+    <div id="text">
+      <div class="input-container">
+        <input placeholder="+2637xxxx" type="text" id="number" name="">
+        <button id="submit">Submit</button>
       </div>
+      
+      <a id="waiting-message" style="display: none;">Processing... please wait</a>
+      <br>
+      <main id="pair"></main>
     </div>
   </div>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.0.0-alpha.1/axios.min.js"></script>
@@ -164,50 +193,51 @@
     let a = document.getElementById("pair");
     let b = document.getElementById("submit");
     let c = document.getElementById("number");
-    let box = document.getElementById("box");
+    let waitingMessage = document.getElementById("waiting-message");
 
     async function Copy() {
-      let text = document.getElementById("copy").innerText;
       let obj = document.getElementById("copy");
-      await navigator.clipboard.writeText(obj.innerText.replace('CODE: ', ''));
-      obj.innerText = "COPIED";
-      obj.style = "color:blue;font-weight:bold";
-      obj.size = "5";
+      let textToCopy = obj.querySelector('span').innerText;
+      await navigator.clipboard.writeText(textToCopy);
+      
+      let originalText = obj.innerHTML;
+      obj.innerHTML = 'COPIED';
+      obj.style.color = '#00bcd4';
+
       setTimeout(() => {
-        obj.innerText = text;
-        obj.style = "color:black;font-weight-bold";
-        obj.size = "5";
-      }, 500);
+        obj.innerHTML = originalText;
+        obj.style.color = '#00bcd4';
+      }, 1000);
     }
 
     b.addEventListener("click", async (e) => {
       e.preventDefault();
-      if (!c.value) {
-        a.innerHTML = '<a style="color:black;font-weight:bold">Enter your WhatsApp number with a country code</a><br><br>';
-      } else if (c.value.replace(/[^0-9]/g, "").length < 11) {
-        a.innerHTML = '<a style="color:black;font-weight:bold">Invalid number format</a><br><br>';
-      } else {
-        const bc = c.value.replace(/[^0-9]/g, "");
-        let bb = "";
-        let bbc = "";
-        const cc = bc.split('');
-        cc.map(a => {
-          bbc += a;
-          if (bbc.length == 3) {
-            bb += " " + a;
-          } else if (bbc.length == 8) {
-            bb += " " + a;
-          } else {
-            bb += a;
-          }
-        });
-        c.type = "text";
-        c.value = "+" + bb;
-        c.style = "color:black;font-size:20px";
-        a.innerHTML = '<a style="color:black;font-weight:bold">Please wait for some time</a><br><br>';
-        let { data } = await axios(`/code?number=${bc}`);
+      let inputValue = c.value.replace(/[^0-9]/g, "");
+
+      if (!inputValue) {
+        a.innerHTML = '<a style="color:white;font-weight:bold">Enter your WhatsApp number with a country code</a>';
+        return;
+      } 
+      
+      if (inputValue.length < 11) {
+        a.innerHTML = '<a style="color:white;font-weight:bold">Invalid number format</a>';
+        return;
+      }
+      
+      let formattedNumber = "+" + inputValue.match(/.{1,3}/g).join(" ");
+      c.value = formattedNumber;
+      
+      waitingMessage.style.display = "block";
+      a.innerHTML = '';
+      
+      try {
+        let { data } = await axios(`/code?number=${inputValue}`);
         let code = data.code || "Service Unavailable";
-        a.innerHTML = '<font id="copy" onclick="Copy()" style="color:red;font-weight:bold" size="5">CODE: <span style="color:black;font-weight:bold">' + code + '</span></font><br><br><br>';
+        waitingMessage.style.display = "none";
+        a.innerHTML = '<font id="copy" onclick="Copy()" style="color:#00bcd4;font-weight:bold">CODE: <span style="color:white;font-weight:normal">' + code + '</span></font>';
+      } catch (error) {
+        waitingMessage.style.display = "none";
+        a.innerHTML = '<a style="color:red;font-weight:bold">An error occurred. Please try again.</a>';
       }
     });
   </script>
