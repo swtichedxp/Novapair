@@ -9,7 +9,7 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      height: 100vh;
+      min-height: 100vh; /* Use min-height for better layout on smaller screens */
       margin: 0;
       font-family: 'Roboto', 'Segoe UI', sans-serif;
       background-image: linear-gradient(to right top, #051937, #004d7a, #008793, #00bf72, #a8eb12);
@@ -23,106 +23,88 @@
       100% { background-position: 0% 50%; }
     }
 
-    h1 {
-      color: white;
-      font-size: 3.5rem;
-      margin-bottom: 40px;
-      text-align: center;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      font-weight: 700;
-      text-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+    /* New Glass Container for the buttons */
+    .glass-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 50px;
+      border-radius: 20px;
+      background: rgba(255, 255, 255, 0.1);
+      /* The key to the frosted glass effect */
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+      transition: all 0.3s ease;
+    }
+
+    .glass-container:hover {
+      box-shadow: 0 10px 40px 0 rgba(31, 38, 135, 0.5);
+      transform: scale(1.02);
     }
 
     .btn {
       width: 250px;
       padding: 15px 25px;
-      margin: 10px;
-      background: rgba(0, 0, 0, 0.5);
-      border-radius: 25px;
-      border: none;
+      margin: 10px 0;
+      background: rgba(255, 255, 255, 0.2);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      border-radius: 10px;
       font-size: 18px;
       font-weight: bold;
       text-transform: uppercase;
       color: white;
       text-align: center;
-      position: relative;
-      overflow: hidden;
       cursor: pointer;
-      transition: all 0.4s ease;
-      box-shadow: 0 5px 15px rgba(255, 255, 255, 0.3);
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+      position: relative; /* Needed for pseudo-element positioning */
+      overflow: hidden;
     }
 
-    /* Add shine effect on hover */
-    .btn::before {
-      content: '';
-      position: absolute;
-      top: -50%;
-      left: -50%;
-      height: 200%;
-      width: 200%;
-      background: rgba(255, 255, 255, 0.3);
-      transform: skewX(45deg);
-      transition: all 0.5s;
-    }
-
-    .btn:hover::before {
-      top: 0;
-      left: 0;
-      height: 100%;
-      width: 100%;
-    }
-
+    /* Simple, clean hover effect */
     .btn:hover {
-      background-color: #ffffff;
-      color: #333;
-      box-shadow: 0 10px 25px rgba(255, 255, 255, 0.5);
-      transform: scale(1.05);
+      background-color: rgba(255, 255, 255, 0.4);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
     }
-
+    
     .btn:active {
-      background: rgba(0, 0, 0, 0.2);
+      transform: translateY(0);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
     }
 
     /* Responsive Design */
     @media (max-width: 600px) {
-      h1 {
-        font-size: 2.2rem;
+      .glass-container {
+        padding: 30px;
+        width: 90%;
       }
       .btn {
-        width: 80%;
-        padding: 12px 20px;
+        width: 100%;
         font-size: 16px;
       }
     }
 
     @media (min-width: 600px) and (max-width: 1024px) {
-      h1 {
-        font-size: 2.8rem;
+      .glass-container {
+        padding: 40px;
       }
       .btn {
         width: 220px;
-        padding: 14px 22px;
       }
     }
-
-    @media (min-width: 1024px) {
-      h1 {
-        font-size: 3.5rem;
-      }
-      .btn {
-        width: 250px;
-        padding: 15px 25px;
-      }
-    }
-
   </style>
 </head>
 <body>
-
-  <button onclick="window.open(`/pair`)" class="btn">Pair Code</button>
-  <button onclick="https://github.com/swtichedxp/Nova-`)" class="btn">GitHub-Repo</button>
-  <button onclick="window.open(`https://wa.me/212684255286`)" class="btn">Developer</button>
+  
+  <div class="glass-container">
+    <button onclick="window.open(`/pair`)" class="btn">Pair Code</button>
+    <button onclick="window.open(`https://github.com/swtichedxp/Nova-`)" class="btn">GitHub-Repo</button>
+    <button onclick="window.open(`https://wa.me/212684255286`)" class="btn">Developer</button>
+  </div>
 
 </body>
 </html>
